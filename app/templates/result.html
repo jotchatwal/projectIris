@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Prediction Result</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+      max-width: 480px;
+      width: 90%;
+      overflow: hidden;
+    }
+    .card-header {
+      background: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    .card-header h4 {
+      margin: 0;
+      font-weight: bold;
+      color: #333;
+    }
+    .card-body {
+      background: #fff;
+      padding: 1.5rem;
+    }
+    .list-group-item {
+      border: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .alert-info {
+      border-radius: 2rem;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+    }
+    .btn-secondary {
+      border-radius: 2rem;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+    }
+    .mb-3 li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h4>Prediction Result</h4>
+    </div>
+    <div class="card-body">
+      <p class="mb-2"><strong>Model:</strong> {{ model_name }}</p>
+      <p class="mb-1"><strong>Measurements:</strong></p>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">Sepal Length: {{ sl }}</li>
+        <li class="list-group-item">Sepal Width: {{ sw }}</li>
+        <li class="list-group-item">Petal Length: {{ pl }}</li>
+        <li class="list-group-item">Petal Width: {{ pw }}</li>
+      </ul>
+      <p class="mb-1"><strong>Engineered Features:</strong></p>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">Sepal Area: {{ sa|round(2) }}</li>
+        <li class="list-group-item">Petal Area: {{ pa|round(2) }}</li>
+        <li class="list-group-item">Sepal/Petal Ratio: {{ spr|round(2) }}</li>
+      </ul>
+      <div class="alert alert-info text-center mb-3">
+        Predicted: <strong>{{ species }}</strong> (class {{ pred }})
+      </div>
+      <div class="text-center">
+        <a href="/" class="btn btn-secondary">Try Again</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
